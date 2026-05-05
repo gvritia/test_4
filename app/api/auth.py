@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends, Response, status
 
+
 from app.api.response_docs import AUTH_LOGIN_RESPONSES, AUTH_LOGOUT_RESPONSES, AUTH_ME_RESPONSES
 from app.core.dependencies import get_authorization_token, get_current_user
 from app.core.user_store import user_store

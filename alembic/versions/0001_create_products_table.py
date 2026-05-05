@@ -5,6 +5,7 @@ Revises:
 Create Date: 2026-04-25 16:30:00
 """
 
+
 from decimal import Decimal
 
 from alembic import op

@@ -8,3 +8,4 @@ class UserNotFoundError(ApplicationError):
             error="user_not_found",
             message=f"Пользователь с id={user_id} не найден.",
         )
+

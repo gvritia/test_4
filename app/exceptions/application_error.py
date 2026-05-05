@@ -4,3 +4,4 @@ class ApplicationError(Exception):
         self.error = error
         self.message = message
         super().__init__(message)
+

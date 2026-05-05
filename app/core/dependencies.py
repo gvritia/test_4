@@ -1,5 +1,6 @@
 from typing import Annotated
 
+
 from fastapi import Depends, Header
 
 from app.core.user_store import user_store

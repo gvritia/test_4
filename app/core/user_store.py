@@ -1,6 +1,7 @@
 from itertools import count
 from threading import Lock
 
+
 from app.core.security import create_access_token, hash_password, verify_password
 from app.exceptions.invalid_credentials_error import InvalidCredentialsError
 from app.exceptions.user_already_exists_error import UserAlreadyExistsError

@@ -5,3 +5,4 @@ class ValidationErrorItem(BaseModel):
     field: str
     message: str
     error_type: str
+

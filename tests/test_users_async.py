@@ -88,3 +88,4 @@ async def test_delete_same_user_twice_async_returns_404(async_client, faker):
     assert first_response.status_code == 204
     assert second_response.status_code == 404
     assert second_response.json()["error"] == "user_not_found"
+

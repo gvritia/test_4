@@ -59,3 +59,4 @@ def test_get_missing_user_returns_404(client):
 
     assert response.status_code == 404
     assert response.json()["error"] == "user_not_found"
+

@@ -1,6 +1,7 @@
 from app.models.model_error_response import ErrorResponse
 from app.models.model_validation_error_response import ValidationErrorResponse
 
+
 AUTH_LOGIN_RESPONSES = {
     200: {"description": "Аутентификация выполнена успешно."},
     401: {"model": ErrorResponse, "description": "Неверный логин или пароль."},

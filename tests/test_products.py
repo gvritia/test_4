@@ -36,3 +36,4 @@ def test_create_product_returns_201(client):
     payload = response.json()
     assert payload["title"] == "Monitor"
     assert payload["description"]
+

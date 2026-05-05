@@ -11,3 +11,4 @@ class ProductResponse(BaseModel):
     price: Decimal
     count: int
     description: str
+

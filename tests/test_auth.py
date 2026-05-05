@@ -79,3 +79,4 @@ def test_logout_invalidates_token(client):
         headers={"Authorization": f"Bearer {token}"},
     )
     assert me_response.status_code == 401
+

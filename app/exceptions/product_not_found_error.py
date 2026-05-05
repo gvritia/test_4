@@ -8,3 +8,4 @@ class ProductNotFoundError(ApplicationError):
             error="product_not_found",
             message=f"Товар с id={product_id} не найден.",
         )
+

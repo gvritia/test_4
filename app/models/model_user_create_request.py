@@ -22,3 +22,4 @@ class UserCreateRequest(BaseModel):
             raise ValueError("Телефон должен содержать от 7 до 20 символов и только цифры/скобки/пробелы.")
 
         return value
+

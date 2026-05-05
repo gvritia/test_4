@@ -7,3 +7,4 @@ class UserResponse(BaseModel):
     age: int
     email: str
     phone: str
+

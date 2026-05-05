@@ -8,3 +8,4 @@ class ValidationErrorResponse(BaseModel):
     error: str
     message: str
     details: list[ValidationErrorItem] = Field(default_factory=list)
+
