@@ -1,4 +1,13 @@
+"""Синхронные тесты users-эндпоинтов.
+
+Относится к заданиям:
+- 10.2: проверка валидации пользовательских данных;
+- 11.1: проверка разных сценариев через TestClient.
+"""
+
+
 def test_create_user_returns_201_and_public_fields(client):
+    # Создаем пользователя и убеждаемся, что в ответе только публичные поля.
     response = client.post(
         "/users",
         json={
@@ -18,6 +27,7 @@ def test_create_user_returns_201_and_public_fields(client):
 
 
 def test_create_user_returns_409_for_duplicate_username(client):
+    # Первый запрос должен пройти успешно, второй - упасть из-за конфликта username.
     payload = {
         "username": "student_one",
         "age": 22,
@@ -38,6 +48,8 @@ def test_create_user_returns_409_for_duplicate_username(client):
 
 
 def test_create_user_returns_custom_validation_payload(client):
+    # Намеренно передаем несколько неправильных значений,
+    # чтобы проверить единый формат 422-ответа.
     response = client.post(
         "/users",
         json={
@@ -55,8 +67,8 @@ def test_create_user_returns_custom_validation_payload(client):
 
 
 def test_get_missing_user_returns_404(client):
+    # Проверяем пользовательскую 404-ошибку.
     response = client.get("/users/999")
 
     assert response.status_code == 404
     assert response.json()["error"] == "user_not_found"
-

@@ -5,6 +5,14 @@ Revises: 0001_create_products
 Create Date: 2026-04-25 16:40:00
 """
 
+"""Вторая миграция для задания 9.1.
+
+Что делает:
+- добавляет обязательное поле description;
+- временно ставит server_default, чтобы не сломать старые записи;
+- заполняет description у уже существующих товаров;
+- затем убирает server_default.
+"""
 
 from alembic import op
 import sqlalchemy as sa
@@ -16,6 +24,7 @@ depends_on = None
 
 
 def upgrade() -> None:
+    # batch_alter_table особенно полезен для SQLite, где ALTER TABLE ограничен.
     with op.batch_alter_table("products") as batch_op:
         batch_op.add_column(
             sa.Column(
@@ -26,6 +35,7 @@ def upgrade() -> None:
             )
         )
 
+    # Обновляем уже существующие записи осмысленными описаниями.
     op.execute(
         sa.text(
             "UPDATE products "
@@ -36,10 +46,13 @@ def upgrade() -> None:
         )
     )
 
+    # После заполнения старых данных убираем дефолт:
+    # поле остается обязательным, но без автоматической подстановки на уровне БД.
     with op.batch_alter_table("products") as batch_op:
         batch_op.alter_column("description", server_default=None)
 
 
 def downgrade() -> None:
+    # Откат убирает добавленную колонку.
     with op.batch_alter_table("products") as batch_op:
         batch_op.drop_column("description")

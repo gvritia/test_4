@@ -1,3 +1,8 @@
+"""Ошибка отсутствующего пользователя.
+
+Относится к заданиям 10.1, 10.2 и 11.2: используется в get/delete сценариях.
+"""
+
 from app.exceptions.application_error import ApplicationError
 
 
@@ -8,4 +13,3 @@ class UserNotFoundError(ApplicationError):
             error="user_not_found",
             message=f"Пользователь с id={user_id} не найден.",
         )
-
